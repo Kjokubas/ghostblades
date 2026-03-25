@@ -31,7 +31,7 @@ export default function RootLayout({
       )}
       suppressHydrationWarning
     >
-      <body className="font-body min-h-screen bg-ghost-black text-ghost-light">
+      <body className="font-body min-h-screen overflow-x-hidden bg-ghost-black text-ghost-light">
         <LenisProvider>
           {children}
         </LenisProvider>

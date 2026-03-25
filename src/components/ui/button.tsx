@@ -21,7 +21,7 @@ const buttonVariants = cva(
         destructive:
           "border-accent-crimson/50 bg-accent-crimson/10 text-accent-crimson hover:bg-accent-crimson/20 hover:border-accent-crimson hover:shadow-[0_0_20px_rgba(220,38,38,0.4)]",
         gold:
-          "border-accent-gold-dim/50 bg-transparent text-accent-gold hover:bg-accent-gold/10 hover:border-accent-gold hover:shadow-[0_0_20px_rgba(201,168,76,0.3)]",
+          "border-accent-gold-dim/50 bg-transparent text-accent-gold hover:bg-accent-gold/10 hover:border-accent-gold hover:shadow-[0_0_20px_rgba(139,0,0,0.3)]",
         link: "border-transparent text-accent-red-light underline-offset-4 hover:underline",
       },
       size: {

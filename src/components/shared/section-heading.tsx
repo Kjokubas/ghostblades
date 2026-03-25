@@ -1,8 +1,8 @@
 "use client";
 
-import { RevealOnScroll } from "./reveal-on-scroll";
-import { BrushStrokeAccent } from "./brush-stroke-accent";
-import { KatanaSlashDivider } from "./katana-slash-divider";
+import { useRef } from "react";
+import { motion, useInView } from "motion/react";
+import { ease, duration } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 
 interface SectionHeadingProps {
@@ -10,9 +10,7 @@ interface SectionHeadingProps {
   titleAccent?: string;
   titleSuffix?: string;
   subtitle?: string;
-  japanese?: string;
   align?: "left" | "center";
-  showSlash?: boolean;
   className?: string;
 }
 
@@ -21,42 +19,69 @@ export function SectionHeading({
   titleAccent,
   titleSuffix,
   subtitle,
-  japanese,
   align = "left",
-  showSlash = false,
   className,
 }: SectionHeadingProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
   return (
-    <RevealOnScroll
-      className={cn(
-        "mb-16",
-        align === "center" && "text-center",
-        className
-      )}
+    <div
+      ref={ref}
+      className={cn("mb-16", align === "center" && "text-center", className)}
     >
-      {japanese && (
-        <p className="font-japanese text-accent-red/60 mb-3 text-sm tracking-[0.3em]">
-          {japanese}
-        </p>
-      )}
-      <h2 className="font-heading text-ghost-white text-4xl font-bold uppercase tracking-wider md:text-5xl lg:text-6xl">
-        {title}
-        {titleAccent && (
-          <>{" "}<span className="text-accent-crimson">{titleAccent}</span></>
+      {/* Red line — animates FIRST */}
+      <motion.div
+        className={cn(
+          "h-px w-12 bg-accent-red/60 origin-center",
+          align === "center" && "mx-auto"
         )}
-        {titleSuffix && <>{" "}{titleSuffix}</>}
-      </h2>
-      <div className={cn("mx-auto mt-4 max-w-xs", align === "left" && "mx-0")}>
-        <BrushStrokeAccent variant="underline" />
+        initial={{ scaleX: 0 }}
+        animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+        transition={{ duration: duration.slow, ease: ease.dramatic }}
+      />
+
+      {/* Heading — mask reveals SECOND */}
+      <div className="mt-4 overflow-hidden">
+        <motion.h2
+          className="font-heading text-4xl font-bold uppercase tracking-wider text-ghost-white md:text-5xl lg:text-6xl"
+          initial={{ y: "100%", opacity: 0 }}
+          animate={isInView ? { y: 0, opacity: 1 } : { y: "100%", opacity: 0 }}
+          transition={{
+            duration: duration.slow,
+            ease: ease.dramatic,
+            delay: 0.3,
+          }}
+        >
+          {title}
+          {titleAccent && (
+            <>
+              {" "}
+              <span className="text-accent-crimson">{titleAccent}</span>
+            </>
+          )}
+          {titleSuffix && <>{" "}{titleSuffix}</>}
+        </motion.h2>
       </div>
+
+      {/* Subtitle — fades up THIRD */}
       {subtitle && (
-        <p className={cn("text-ghost-silver/80 mt-6 max-w-2xl text-lg md:text-xl", align === "center" && "mx-auto")}>
+        <motion.p
+          className={cn(
+            "mt-6 max-w-2xl text-lg text-ghost-silver md:text-xl",
+            align === "center" && "mx-auto"
+          )}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{
+            duration: duration.normal,
+            ease: ease.smooth,
+            delay: 0.6,
+          }}
+        >
           {subtitle}
-        </p>
+        </motion.p>
       )}
-      {showSlash && (
-        <KatanaSlashDivider variant="single" className="mt-6 py-2" />
-      )}
-    </RevealOnScroll>
+    </div>
   );
 }

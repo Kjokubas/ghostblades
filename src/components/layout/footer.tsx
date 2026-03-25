@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { footerNavigation } from "@/data/navigation";
 import { BRAND } from "@/lib/constants";
@@ -31,12 +30,12 @@ export function Footer() {
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-ghost-silver hover:text-accent-red-light text-sm transition-colors"
+                    <span
+                      className="group relative inline-block cursor-pointer text-sm text-ghost-silver transition-colors hover:text-accent-red"
                     >
                       {link.label}
-                    </Link>
+                      <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-accent-red transition-transform duration-300 group-hover:scale-x-100" />
+                    </span>
                   </li>
                 ))}
               </ul>

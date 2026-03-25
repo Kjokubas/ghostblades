@@ -21,10 +21,10 @@
   --color-ghost-light: #E5E5E5;
   --color-ghost-white: #F5F5F5;
 
-  /* Red dominant, gold secondary */
-  --color-accent-gold: #C9A84C;
-  --color-accent-gold-light: #E4CC7A;
-  --color-accent-gold-dim: #8B7333;
+  /* Blood red palette */
+  --color-accent-gold: #8B0000;
+  --color-accent-gold-light: #B22222;
+  --color-accent-gold-dim: #5C0000;
   --color-accent-red: #8B2020;
   --color-accent-red-light: #B33030;
   --color-accent-crimson: #DC2626;
@@ -82,7 +82,7 @@
 
   /* Gradients */
   --color-red-gradient: linear-gradient(135deg, #8B2020 0%, #DC2626 50%, #8B2020 100%);
-  --color-gold-gradient: linear-gradient(135deg, #C9A84C 0%, #E4CC7A 50%, #C9A84C 100%);
+  --color-gold-gradient: linear-gradient(135deg, #8B0000 0%, #B22222 50%, #8B0000 100%);
   --color-dark-gradient: linear-gradient(180deg, #0A0A0A 0%, #111111 50%, #0A0A0A 100%);
 
   /* Easing */
@@ -164,14 +164,14 @@
   --secondary-foreground: #E5E5E5;
   --muted: #2A2A2A;
   --muted-foreground: #8A8A8A;
-  --accent: #C9A84C;
+  --accent: #8B0000;
   --accent-foreground: #0A0A0A;
   --destructive: #DC2626;
   --border: #2A2A2A;
   --input: #2A2A2A;
   --ring: #DC2626;
   --chart-1: #B33030;
-  --chart-2: #C9A84C;
+  --chart-2: #8B0000;
   --chart-3: #8A8A8A;
   --chart-4: #2A2A2A;
   --chart-5: #111111;
@@ -199,14 +199,14 @@
   --secondary-foreground: #E5E5E5;
   --muted: #2A2A2A;
   --muted-foreground: #8A8A8A;
-  --accent: #C9A84C;
+  --accent: #8B0000;
   --accent-foreground: #0A0A0A;
   --destructive: #DC2626;
   --border: #2A2A2A;
   --input: #2A2A2A;
   --ring: #DC2626;
   --chart-1: #B33030;
-  --chart-2: #C9A84C;
+  --chart-2: #8B0000;
   --chart-3: #8A8A8A;
   --chart-4: #2A2A2A;
   --chart-5: #111111;

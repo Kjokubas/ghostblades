@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { X } from "lucide-react";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { mainNavigation } from "@/data/navigation";
 
@@ -22,13 +21,6 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
               alt="Ghost Blades"
               className="h-8 w-auto"
             />
-            <button
-              onClick={onClose}
-              className="text-ghost-silver transition-colors hover:text-ghost-white"
-              aria-label="Close menu"
-            >
-              <X className="h-6 w-6" />
-            </button>
           </div>
 
           {/* Navigation links */}
@@ -36,24 +28,20 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             <ul className="space-y-6">
               {mainNavigation.map((item) => (
                 <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={onClose}
-                    className="font-heading block border-l-2 border-transparent pl-4 text-2xl font-bold uppercase tracking-wider text-ghost-light transition-all hover:border-accent-red hover:text-accent-red-light"
+                  <span
+                    className="font-heading block cursor-pointer border-l-2 border-transparent pl-4 text-2xl font-bold uppercase tracking-wider text-ghost-light transition-all hover:border-accent-red hover:text-accent-red-light"
                   >
                     {item.label}
-                  </Link>
+                  </span>
                   {item.children && (
                     <ul className="mt-3 ml-4 space-y-2">
                       {item.children.map((child) => (
                         <li key={child.href}>
-                          <Link
-                            href={child.href}
-                            onClick={onClose}
-                            className="border-l border-ghost-steel/30 pl-4 text-sm uppercase tracking-wider text-ghost-silver transition-colors hover:border-accent-red/50 hover:text-accent-red-light"
+                          <span
+                            className="block cursor-pointer border-l border-ghost-steel/30 pl-4 text-sm uppercase tracking-wider text-ghost-silver transition-colors hover:border-accent-red/50 hover:text-accent-red-light"
                           >
                             {child.label}
-                          </Link>
+                          </span>
                         </li>
                       ))}
                     </ul>

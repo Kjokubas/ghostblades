@@ -30,13 +30,11 @@ export function CartDrawer() {
               Your cart is empty. Discover our collection of handcrafted
               Japanese swords.
             </p>
-            <Link
-              href="/collections"
-              onClick={toggleCart}
-              className="inline-flex h-8 items-center justify-center border border-accent-red-light px-6 text-sm uppercase tracking-wider text-accent-red-light transition-colors hover:bg-accent-red-light hover:text-white"
+            <span
+              className="inline-flex h-8 cursor-pointer items-center justify-center border border-accent-red-light px-6 text-sm uppercase tracking-wider text-accent-red-light transition-colors hover:bg-accent-red-light hover:text-white"
             >
               Browse Collections
-            </Link>
+            </span>
           </div>
         ) : (
           <>
@@ -55,13 +53,11 @@ export function CartDrawer() {
                     </div>
                     <div className="flex flex-1 flex-col">
                       <div className="flex items-start justify-between">
-                        <Link
-                          href={`/products/${item.handle}`}
-                          onClick={toggleCart}
-                          className="text-sm font-medium text-ghost-light transition-colors hover:text-accent-red-light"
+                        <span
+                          className="cursor-pointer text-sm font-medium text-ghost-light transition-colors hover:text-accent-red-light"
                         >
                           {item.title}
-                        </Link>
+                        </span>
                         <button
                           onClick={() => removeItem(item.id)}
                           className="text-ghost-silver transition-colors hover:text-accent-crimson"

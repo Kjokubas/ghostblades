@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function NotFound() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center bg-ghost-black px-4">
@@ -15,12 +13,11 @@ export default function NotFound() {
       <p className="text-ghost-silver mb-10 max-w-md text-center">
         The path you seek does not exist. Return to the forge.
       </p>
-      <Link
-        href="/"
-        className="bg-accent-red-light text-white hover:bg-accent-crimson px-8 py-3 text-sm font-semibold tracking-wide uppercase transition-colors"
+      <span
+        className="cursor-pointer bg-accent-red-light text-white hover:bg-accent-crimson px-8 py-3 text-sm font-semibold tracking-wide uppercase transition-colors"
       >
         Return Home
-      </Link>
+      </span>
     </div>
   );
 }

@@ -26,9 +26,8 @@ export default function CollectionsPage() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {collections.map((collection, i) => (
               <RevealOnScroll key={collection.handle} delay={i * 0.15}>
-                <Link
-                  href={`/collections/${collection.handle}`}
-                  className="group relative block aspect-[3/4] overflow-hidden"
+                <div
+                  className="group relative block cursor-pointer aspect-[3/4] overflow-hidden"
                 >
                   <Image
                     src={collection.image}
@@ -48,7 +47,7 @@ export default function CollectionsPage() {
                       {collection.productCount} products
                     </p>
                   </div>
-                </Link>
+                </div>
               </RevealOnScroll>
             ))}
           </div>
