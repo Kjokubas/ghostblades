@@ -7,7 +7,11 @@ import { ease, duration } from "@/lib/animations";
 export function HeroSection() {
   return (
     <section className="relative flex h-screen items-center overflow-hidden">
-      {/* Video background */}
+      {/* Static image for mobile, video for desktop */}
+      <div
+        className="absolute inset-0 bg-cover bg-center md:hidden"
+        style={{ backgroundImage: "url('/images/hero/code-red-katana-ghost-blades-hamon-blade-tsuka-saya.webp')" }}
+      />
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <video
         src="/images/about/Vortex Katana – Detailed Video Showcase  Ghost Blades - Ghost Blades (1080p, h264, youtube).mp4"
@@ -16,9 +20,8 @@ export function HeroSection() {
         loop
         playsInline
         preload="auto"
-
         webkit-playsinline="true"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 hidden h-full w-full object-cover md:block"
         ref={(el) => { if (el) el.play().catch(() => {}); }}
       />
 

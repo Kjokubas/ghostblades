@@ -17,7 +17,12 @@ export function AboutPreview() {
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <RevealOnScroll direction="left" type="slide-right">
-            <div className="aspect-square overflow-hidden bg-ghost-charcoal ring-1 ring-ghost-steel/20">
+            <div className="relative aspect-square overflow-hidden bg-ghost-charcoal ring-1 ring-ghost-steel/20">
+              {/* Static image for mobile */}
+              <div
+                className="absolute inset-0 bg-cover bg-center md:hidden"
+                style={{ backgroundImage: "url('/images/hero/code-red-katana-ghost-blades-hamon-blade-tsuka-saya.webp')" }}
+              />
               {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
               <video
                 src="/images/about/Vortex Katana – Detailed Video Showcase  Ghost Blades - Ghost Blades (1080p, h264, youtube).mp4"
@@ -26,9 +31,8 @@ export function AboutPreview() {
                 loop
                 playsInline
                 preload="auto"
-
                 webkit-playsinline="true"
-                className="h-full w-full object-cover"
+                className="hidden h-full w-full object-cover md:block"
                 ref={(el) => { if (el) el.play().catch(() => {}); }}
               />
             </div>
