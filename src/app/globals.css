@@ -7,9 +7,29 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-body);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-heading);
+  --font-japanese: var(--font-japanese);
+
+  /* Ghost Blades brand palette */
+  --color-ghost-black: #0A0A0A;
+  --color-ghost-dark: #111111;
+  --color-ghost-charcoal: #1A1A1A;
+  --color-ghost-steel: #2A2A2A;
+  --color-ghost-silver: #8A8A8A;
+  --color-ghost-light: #E5E5E5;
+  --color-ghost-white: #F5F5F5;
+
+  /* Red dominant, gold secondary */
+  --color-accent-gold: #C9A84C;
+  --color-accent-gold-light: #E4CC7A;
+  --color-accent-gold-dim: #8B7333;
+  --color-accent-red: #8B2020;
+  --color-accent-red-light: #B33030;
+  --color-accent-crimson: #DC2626;
+
+  /* shadcn theme mappings */
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -46,75 +66,158 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Custom animations */
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
+  --animate-fade-in-down: fade-in-down 0.6s ease-out forwards;
+  --animate-slide-up: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-in-right: slide-in-right 0.4s ease-out forwards;
+  --animate-slide-in-left: slide-in-left 0.4s ease-out forwards;
+  --animate-ticker: ticker 30s linear infinite;
+  --animate-scale-in: scale-in 0.3s ease-out forwards;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-smoke-drift: smoke-drift 20s ease-in-out infinite;
+
+  /* Gradients */
+  --color-red-gradient: linear-gradient(135deg, #8B2020 0%, #DC2626 50%, #8B2020 100%);
+  --color-gold-gradient: linear-gradient(135deg, #C9A84C 0%, #E4CC7A 50%, #C9A84C 100%);
+  --color-dark-gradient: linear-gradient(180deg, #0A0A0A 0%, #111111 50%, #0A0A0A 100%);
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-down {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  0% { opacity: 0; transform: translateY(60px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  0% { opacity: 0; transform: translateX(30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-left {
+  0% { opacity: 0; transform: translateX(-30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scale-in {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes smoke-drift {
+  0%, 100% { transform: translateX(0) scaleX(1); }
+  50% { transform: translateX(30px) scaleX(1.05); }
+}
+
+@keyframes slash-reveal {
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+/* Ghost Blades — Samurai Warrior Theme
+   PRIMARY = Red (dominant), ACCENT = Gold (secondary) */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --background: #0A0A0A;
+  --foreground: #E5E5E5;
+  --card: #111111;
+  --card-foreground: #E5E5E5;
+  --popover: #111111;
+  --popover-foreground: #E5E5E5;
+  --primary: #B33030;
+  --primary-foreground: #F5F5F5;
+  --secondary: #1A1A1A;
+  --secondary-foreground: #E5E5E5;
+  --muted: #2A2A2A;
+  --muted-foreground: #8A8A8A;
+  --accent: #C9A84C;
+  --accent-foreground: #0A0A0A;
+  --destructive: #DC2626;
+  --border: #2A2A2A;
+  --input: #2A2A2A;
+  --ring: #DC2626;
+  --chart-1: #B33030;
+  --chart-2: #C9A84C;
+  --chart-3: #8A8A8A;
+  --chart-4: #2A2A2A;
+  --chart-5: #111111;
+  --radius: 0.125rem;
+  --sidebar: #111111;
+  --sidebar-foreground: #E5E5E5;
+  --sidebar-primary: #B33030;
+  --sidebar-primary-foreground: #F5F5F5;
+  --sidebar-accent: #1A1A1A;
+  --sidebar-accent-foreground: #E5E5E5;
+  --sidebar-border: #2A2A2A;
+  --sidebar-ring: #DC2626;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #0A0A0A;
+  --foreground: #E5E5E5;
+  --card: #111111;
+  --card-foreground: #E5E5E5;
+  --popover: #111111;
+  --popover-foreground: #E5E5E5;
+  --primary: #B33030;
+  --primary-foreground: #F5F5F5;
+  --secondary: #1A1A1A;
+  --secondary-foreground: #E5E5E5;
+  --muted: #2A2A2A;
+  --muted-foreground: #8A8A8A;
+  --accent: #C9A84C;
+  --accent-foreground: #0A0A0A;
+  --destructive: #DC2626;
+  --border: #2A2A2A;
+  --input: #2A2A2A;
+  --ring: #DC2626;
+  --chart-1: #B33030;
+  --chart-2: #C9A84C;
+  --chart-3: #8A8A8A;
+  --chart-4: #2A2A2A;
+  --chart-5: #111111;
+  --sidebar: #111111;
+  --sidebar-foreground: #E5E5E5;
+  --sidebar-primary: #B33030;
+  --sidebar-primary-foreground: #F5F5F5;
+  --sidebar-accent: #1A1A1A;
+  --sidebar-accent-foreground: #E5E5E5;
+  --sidebar-border: #2A2A2A;
+  --sidebar-ring: #DC2626;
 }
 
 @layer base {
@@ -122,9 +225,90 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-ghost-black text-ghost-light antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
   }
   html {
     @apply font-sans;
+  }
+
+  ::selection {
+    background: rgba(220, 38, 38, 0.4);
+    color: white;
+  }
+
+  /* Lenis smooth scroll */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  /* Custom scrollbar — thin, dark, red hover */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0A0A0A;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2A2A2A;
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8B2020;
+  }
+}
+
+/* Samurai utility classes */
+@layer utilities {
+  /* Battle-worn noise texture overlay */
+  .texture-noise {
+    position: relative;
+  }
+  .texture-noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 128px 128px;
+  }
+
+  /* Smoke/fog gradients */
+  .smoke-top {
+    position: relative;
+  }
+  .smoke-top::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, #0A0A0A 0%, rgba(10, 10, 10, 0.6) 40%, transparent 100%);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .smoke-bottom {
+    position: relative;
+  }
+  .smoke-bottom::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, #0A0A0A 0%, rgba(10, 10, 10, 0.6) 40%, transparent 100%);
+    pointer-events: none;
+    z-index: 10;
   }
 }
