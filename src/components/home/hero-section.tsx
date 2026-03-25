@@ -16,7 +16,7 @@ export function HeroSection() {
         loop
         playsInline
         preload="auto"
-        // @ts-expect-error — webkit vendor attribute for iOS autoplay
+
         webkit-playsinline="true"
         className="absolute inset-0 h-full w-full object-cover"
         ref={(el) => { if (el) el.play().catch(() => {}); }}

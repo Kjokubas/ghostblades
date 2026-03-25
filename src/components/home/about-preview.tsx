@@ -26,7 +26,7 @@ export function AboutPreview() {
                 loop
                 playsInline
                 preload="auto"
-                // @ts-expect-error — webkit vendor attribute for iOS autoplay
+
                 webkit-playsinline="true"
                 className="h-full w-full object-cover"
                 ref={(el) => { if (el) el.play().catch(() => {}); }}
