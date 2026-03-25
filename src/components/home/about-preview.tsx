@@ -18,13 +18,18 @@ export function AboutPreview() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <RevealOnScroll direction="left" type="slide-right">
             <div className="aspect-square overflow-hidden bg-ghost-charcoal ring-1 ring-ghost-steel/20">
+              {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
               <video
                 src="/images/about/Vortex Katana – Detailed Video Showcase  Ghost Blades - Ghost Blades (1080p, h264, youtube).mp4"
                 autoPlay
                 muted
                 loop
                 playsInline
+                preload="auto"
+                // @ts-expect-error — webkit vendor attribute for iOS autoplay
+                webkit-playsinline="true"
                 className="h-full w-full object-cover"
+                ref={(el) => { if (el) el.play().catch(() => {}); }}
               />
             </div>
           </RevealOnScroll>

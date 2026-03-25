@@ -8,13 +8,18 @@ export function HeroSection() {
   return (
     <section className="relative flex h-screen items-center overflow-hidden">
       {/* Video background */}
+      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <video
         src="/images/about/Vortex Katana – Detailed Video Showcase  Ghost Blades - Ghost Blades (1080p, h264, youtube).mp4"
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
+        // @ts-expect-error — webkit vendor attribute for iOS autoplay
+        webkit-playsinline="true"
         className="absolute inset-0 h-full w-full object-cover"
+        ref={(el) => { if (el) el.play().catch(() => {}); }}
       />
 
       {/* Animated dark overlay — "lights coming up" */}
